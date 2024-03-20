@@ -1,0 +1,66 @@
+<!-- templates/music_management.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+    <title>Music Management</title>
+</head>
+
+<body>
+    <header class="header">
+        <a href="{% url 'home' %}" class="logo gradient-text">Music Player.</a>
+
+        <nav class="navbar">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="#" class="active">management</a>
+            <a href="{% url 'delete_music' %}">Delete</a>
+        </nav>
+    </header>
+    <div class="container_management">
+
+        <div class="simbol-container">
+            <div class="music-symbol">
+                <img class="center_img" id="rotatingImage" src="{% static 'blackhole.jpg' %}" alt="My_image" />
+            </div>
+        </div>
+        <h2>Music Management</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="file_add">
+                <label for="id_title">Title:</label>
+                {{ form.title.label_tag }} {{ form.title }}<br>
+                <p id="titleLength">0/50 characters</p>
+            </div>
+            <div class="file_add">
+                {{ form.file.label_tag }} {{ form.file }}<br>
+            </div>
+            <button class="button_pageAdd" type="submit">Add Music</button>
+        </form>
+        <a href="{% url 'delete_music' %}" class="button_pageAdd">Delete Music</a>
+
+    </div>
+
+    <div class="music-buttons">
+        <!-- Music buttons -->
+        <div class="music-container">
+            {% for music_file in music_files %}
+            <div class="music-item">
+                <button class="button_m" onclick="playMusic('{{ music_file.file.url }}')"
+                    data-url="{{ music_file.file.url }}">
+                    {{ music_file.title }}
+                </button>
+            </div>
+            {% endfor %}
+        </div>
+        <script src="{% static 'management.js' %}"></script>
+
+</body>
+
+</html>

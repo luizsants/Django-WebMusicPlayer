@@ -1,0 +1,71 @@
+<!-- music_management.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+    <title>Music Management</title>
+</head>
+
+<body>
+    <header class="header">
+        <a href="{% url 'home' %}" class="logo gradient-text">Music Player.</a>
+        <nav class="navbar">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'music_management' %}">management</a>
+            <a href="#" class="active">Delete</a>
+        </nav>
+    </header>
+    <!--  existing HTML content -->
+    <div class="container_delete">
+        <!-- Add music files -->
+        <h2 class="delete_music_title">Delete Music</h2>
+
+        <!-- List of music files -->
+        {% for music_file in music_files %}
+        <div class="music-item" data-id="{{ music_file.id }}">
+            <button class="button-delete" onclick="deleteFile('{{ music_file.id }}')">Delete</button>
+            <span class="title_text_delete">{{ music_file.title }}</span>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!--  script to handle deletion -->
+    <script>
+        // Function to handle file deletion
+        function deleteFile(id) {
+            // Send AJAX request to delete the file
+            fetch('/delete-file/' + id, {
+                method: 'DELETE',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}'
+                }
+            })
+                .then(response => {
+                    if (response.ok) {
+                        // File deleted successfully, remove it from the DOM
+                        document.querySelector(`.music-item[data-id="${id}"]`).remove();
+                    } else {
+                        console.error('Failed to delete the file.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        // Attach event listeners to delete buttons
+        document.querySelectorAll('.button-delete').forEach(button => {
+            button.addEventListener('click', () => {
+                // Get the id of the file to be deleted
+                const fileId = button.closest('.music-item').dataset.id;
+                // Call deleteFile function
+                deleteFile(fileId);
+            });
+        });
+    </script>
+</body>
+
+</html>

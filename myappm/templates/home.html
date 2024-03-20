@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Music Player</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+</head>
+
+
+<body>
+
+    <header class="header">
+        <a href="{% url 'home' %}" class="logo gradient-text">Music Player.</a>
+
+        <nav class="navbar">
+            <a href="#" class="active">Home</a>
+            <a href="{% url 'music_management' %}">management</a>
+            <a href="{% url 'delete_music' %}">Delete</a>
+        </nav>
+    </header>
+    <section class="MainSection">
+        <!-- Music Symbol Container -->
+        <div class="simbol-container">
+            <div class="music-symbol">
+                <img class="center_img" id="rotatingImage" src="{% static 'blackhole.jpg' %}" alt="My_image" />
+            </div>
+        </div>
+
+        <div class="control-container">
+            <!-- Button Container -->
+            <div class="control-buttons">
+                <button class="button_c button-back" onclick="skipTo('backward')">
+                    &lt;
+                </button>
+                <button class="button_c button-pause" onclick="togglePlayback()">
+                    ||
+                </button>
+                <button class="button_c button-next" onclick="skipTo('forward')">
+                    &gt;
+                </button>
+            </div>
+            <a href="{% url 'music_management' %}" class="button-manage">
+                <!-- Icon from Font Awesome -->
+                <i class="fas fa-plus"></i>
+            </a>
+        </div>
+        <!------------------------------------------------------------------>
+
+        <!-- Music buttons -->
+        <div class="music-buttons">
+            <div class="music-container">
+                {% for music_file in music_files %}
+                <div class="music-item">
+                    <script>
+                        console.log("this is the file URL: ", "{{music_file.file.url}}");
+                    </script>
+                    <button class="button_m" onclick="playMusic('{{ music_file.file.url }}')"
+                        data-url="{{ music_file.file.url }}">
+                        {{ music_file.title }}
+                    </button>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!------------------------------------------------------------------>
+
+    <!-- Audio Player -->
+    <audio id="audio-player" controls class="PlayerAudio">
+        <source src="" type="audio/mp3" id="audio-source" />
+    </audio>
+    <!-- JavaScript to handle music playback -->
+    <script src="{% static 'script.js' %}"></script>
+    <script>
+        // Function to reload the page when navigating back to it
+        window.onload = function () {
+            if (performance.navigation.type == 2) {
+                location.reload(true);
+            }
+        };
+    </script>
+</body>
+
+</html>

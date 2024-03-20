@@ -1,0 +1,336 @@
+/* shared css for pages and home */
+
+body {
+    height: 98.1vh;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(90deg,
+            rgba(173, 162, 254, 0.9724264705882353) 0%,
+            rgba(172, 255, 240, 1) 88%);
+    font-family: "Roboto", sans-serif;
+}
+
+.gradient-text {
+    background: linear-gradient(45deg, #2b04db, #ab02ff, #89216b);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 95dvw;
+    padding: 5px 2%;
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.navbar a {
+    font-size: 18px;
+    color: #ededed;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 35px;
+    transition: 0.3s;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    color: #00abf0;
+}
+
+.simbol-container {
+    transition: top 0.5s, left 0.5s;
+    padding: 3%;
+    top: 10%;
+    width: 1rem;
+    height: 1rem;
+    left: 46%;
+    text-align: center;
+    background-position: center;
+    background-size: cover;
+    border-radius: 50%;
+    position: absolute;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.music-symbol {
+    font-size: 1em;
+    display: flex;
+    color: #fff;
+    justify-content: center;
+    align-items: center;
+}
+
+.center_img {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 5%;
+    background-size: cover;
+    border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+    .simbol-container {
+        padding: 3%;
+        top: 5%;
+        width: 1rem;
+        left: 4%;
+        height: 1rem;
+        text-align: center;
+        border-radius: 50%;
+        position: absolute;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Home CSS Page*/
+.MainSection {
+    display: block;
+    justify-self: center;
+    justify-content: center;
+    width: 50%;
+}
+
+.control-container {
+    transition: top 0.5s, left 0.5s;
+    top: 37%;
+    height: 4em;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+}
+
+.control-buttons {
+    position: absolute;
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .control-container {
+        top: 37%;
+        height: 3em;
+        width: 50%;
+    }
+
+    .control-buttons {
+        margin-top: 5%;
+        position: relative;
+        display: flex;
+        margin-bottom: 10px;
+        align-items: center;
+    }
+}
+
+.button_c {
+    width: 4.5em;
+    height: 4.5em;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    font-size: 0.8em;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .button_c {
+        width: 3.5em;
+        height: 3.5em;
+        margin-bottom: 8%;
+        background-color: #ffffff;
+        border: none;
+        border-radius: 50%;
+        font-size: 0.6em;
+        cursor: pointer;
+        display: flex;
+        transition: background-color 0.3s;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+}
+
+.button_m {
+    background-color: #eeeaea;
+    border-radius: 20px;
+    margin-left: 4em;
+    min-width: 4em;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .button_m {
+        height: 1em;
+        font-size: 0.6em;
+        background-color: #ffffff;
+        transition: background-color 0.3s;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+}
+
+.button-manage {
+    transition: top 0.5s, left 0.5s;
+    padding-left: 20px;
+    height: 0.5em;
+    left: 20%;
+    bottom: 45%;
+    position: absolute;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .button-manage {
+        height: 0.5em;
+        align-items: center;
+        padding-left: 20px;
+        left: 0;
+        bottom: 45%;
+    }
+}
+
+.PlayerAudio {
+    transition: top 0.3s, bottom 0.3s, height 0.35;
+    position: absolute;
+    width: 50%;
+    bottom: 7%;
+    display: flex;
+}
+
+.button_c:hover {
+    background-color: #00abf0;
+}
+
+.button_m:hover {
+    background-color: #00abf0;
+}
+
+.music-container {
+    top: 10%;
+    left: 68%;
+    height: 6em;
+    width: 6em;
+    position: absolute;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.button_m.playing {
+    background-color: #00abf0;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.music-item {
+    margin-bottom: 10px;
+}
+
+.rotate {
+    animation: spin 2s linear infinite;
+}
+
+/* -------------------------------------------------------------------------- */
+/* MANAGEMENT PAGE CSS */
+
+.container_management {
+    text-align: center;
+    justify-content: center;
+}
+
+.button_pageAdd {
+    padding: 10px 20px;
+    margin: 20px;
+    background-color: #20b2aa;
+    border: none;
+    border-radius: 15px;
+    font-size: 1.2em;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.file_add {
+    padding: 10px 20px;
+    margin: 20px;
+    border: none;
+    border-radius: 15px;
+    font-size: 1.2em;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    margin: 10px;
+    font-size: 0;
+}
+
+/* -------------------------------------------------------------------------- */
+/* DELETE PAGE CSS */
+.container_delete {
+    top: 10%;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    width: 12em;
+    background: #aca2fe;
+    border-radius: 20px;
+    font-size: 1.2em;
+}
+
+.delete_music_title {
+    font-weight: 1000;
+}
+
+.button-delete {
+    padding: 5px;
+    margin: 0 10px 10px 0;
+    width: 6em;
+    font-size: 0.8em;
+    background-color: #20b2aa;
+    border: none;
+    border-radius: 15px;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.title_text_delete {
+    font-size: 0.7em;
+}
+
+/* -------------------------------------------------------------------------- */
+/* ANIMATION CSS */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
